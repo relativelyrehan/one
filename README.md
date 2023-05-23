@@ -1,4 +1,4 @@
-# Open QR
+# [Open QR](https://one.relativelyrehan.co/)
 
 This project is a QR code generator that generates a single QR code for both Play Store and App Store app links. The QR code will redirect the user to the correct app store based on their device. iOS users will be redirected to the App Store, while Android users will be redirected to the Play Store.
 
