@@ -5,10 +5,10 @@ This project is a QR code generator that generates a single QR code for both Pla
 ## Technologies Used
 This project was built using the following technologies:
 
-- Next.js: A React framework for building server-side rendered (SSR) and static websites.
-- Prisma: A modern database toolkit for TypeScript and Node.js that provides an ORM (Object-Relational Mapping) layer for database operations.
-- Supabase: For postgres Database
-- React QR: QR Code generation
+- **Next.js**: A React framework for building server-side rendered (SSR) and static websites. Have used latest released stable App directory [Next 13.4](https://nextjs.org/blog/next-13-4).
+- **Prisma**: A modern database toolkit for TypeScript and Node.js that provides an ORM (Object-Relational Mapping) layer for database operations.
+- **Supabase**: For postgres Database
+- **React** QR: QR Code generation
 
 
 ```bash
