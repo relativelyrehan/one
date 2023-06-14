@@ -50,12 +50,15 @@ export default function Home() {
     } catch (e) {
       return toast.error("Something went wrong");
     }
-  }
+  };
   return (
     <div>
-      <nav onClick={() => {
-        window.location.href = 'https://github.com/relativelyrehan/one'
-      }} className="text-base font-semibold p-4 flex gap-1 items-center cursor-pointer hover:bg-opacity-80">
+      <nav
+        onClick={() => {
+          window.location.href = "https://github.com/relativelyrehan/one";
+        }}
+        className="text-base font-semibold p-4 flex gap-1 items-center cursor-pointer hover:bg-opacity-80"
+      >
         <p>
           <AiFillGithub size={24} />
         </p>
@@ -140,6 +143,7 @@ export default function Home() {
               }}
               placeholder="https://https://apps.apple.com/us/app/your-awesome-app"
               className="bg-gray-800 px-4 py-3 rounded-lg w-full block placeholder:text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-300"
+              required
             />
           </div>
           <div>
@@ -158,6 +162,7 @@ export default function Home() {
               }}
               placeholder="https://play.google.com/store/apps/your-awesome-app"
               className="bg-gray-800 px-4 py-3 rounded-lg w-full block placeholder:text-xs placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-300"
+              required
             />
           </div>
           <button
@@ -191,6 +196,7 @@ export default function Home() {
           &copy; {new Date().getFullYear()} One.
         </div>
       </footer>
+      <Toaster />
     </div>
   );
 }
