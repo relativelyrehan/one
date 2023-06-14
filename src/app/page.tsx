@@ -151,7 +151,7 @@ export default function Home() {
               className="text-gray-400 mb-2 text-xs block"
               htmlFor="play_store"
             >
-              Enter App Store URL
+              Enter Play Store URL
             </label>
             <input
               id="play_store"
