@@ -45,9 +45,11 @@ export default function Home() {
         setQr(data.qr.id);
         return toast.success("QR code generated successfully");
       } else {
+        setLoading(false);
         return toast.success("Something went wrong");
       }
     } catch (e) {
+      setLoading(false);
       return toast.error("Something went wrong");
     }
   };
