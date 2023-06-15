@@ -55,16 +55,18 @@ export default function Home() {
   };
   return (
     <div>
-      <nav
-        onClick={() => {
-          window.location.href = "https://github.com/relativelyrehan/one";
-        }}
-        className="text-base font-semibold p-4 flex gap-1 items-center cursor-pointer hover:bg-opacity-80"
-      >
-        <p>
-          <AiFillGithub size={24} />
+      <nav className="text-base font-semibold p-4 flex justify-between items-center gap-1 cursor-pointer hover:bg-opacity-80">
+        <p className="coromant text-2xl uppercase text-gray-100">
+          One
+          <span className="text-gray-400"> | QR</span>
         </p>
-        <p>One QR.</p>
+        <a
+          href="https://github.com/relativelyrehan/one"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillGithub size={24} />
+        </a>
       </nav>
       <div className="max-w-4xl mx-auto flex flex-col justify-center items-center h-[80vh] px-5">
         {qr ? (

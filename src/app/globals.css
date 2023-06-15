@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,4 +9,8 @@ body {
     linear-gradient(90deg, #ffc4a715 0.1rem, transparent 0.1rem);
   background-size: 3.5rem 3.5rem;
   color: #fefefe;
+}
+
+.coromant {
+  font-family: "Cormorant Garamond", serif !important;
 }
