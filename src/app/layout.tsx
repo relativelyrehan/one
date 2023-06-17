@@ -4,8 +4,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "One QR Code",
-  description: "Generate one QR for both Playstore and Appstore app links",
+  title: "One link or QR code to apps on App Store, Google Play",
+  description:
+    "Simplify app downloads with 'one' smart links for all app stores. Short link generator for app downloads.",
 };
 
 export default function RootLayout({
