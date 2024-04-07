@@ -86,14 +86,14 @@ export default function Home() {
               <QRCode
                 id="QRCode"
                 size={250}
-                value={`https://one.relativelyrehan.co/api/qr?id=${qr}`}
+                value={`https://one.rehan.fun/api/qr?id=${qr}`}
                 level="L"
               />
               <div className="flex flex-col sm:flex-row gap-3 text-sm mt-5">
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      `https://one.relativelyrehan.co/api/qr?id=${qr}`
+                      `https://one.rehan.fun/api/qr?id=${qr}`
                     );
                     toast.success("Link copied to clipboard");
                   }}
@@ -188,7 +188,7 @@ export default function Home() {
           </div>
           by
           <a
-            href="https://relativelyrehan.co"
+            href="https://rehan.fun"
             target="_blank"
             rel="noopener noreferrer"
             className="text-indigo-300 hover:text-slate-50 text-base"
