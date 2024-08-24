@@ -63,7 +63,7 @@ export default function Home() {
           </p>
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {new Array(5).fill(0).map((_, index) => (
-              <div className="col-span-1">
+              <div key={_} className="col-span-1">
                 <img src={`/eg${index + 1}.png`} alt="example" />
               </div>
             ))}
