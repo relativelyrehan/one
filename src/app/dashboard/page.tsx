@@ -147,7 +147,10 @@ export default function Dashboard() {
             ? new Array(12)
                 .fill(0)
                 .map((_, k) => (
-                  <div className="col-span-1 bg-zinc-800 animate-pulse h-80"></div>
+                  <div
+                    className="col-span-1 bg-zinc-800 animate-pulse h-80"
+                    key={k}
+                  ></div>
                 ))
             : qrList?.map((qr, k) => (
                 <QRCard
