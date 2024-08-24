@@ -8,9 +8,9 @@ export default function Navbar() {
   const [isLoggedIn] = useAtom(isLoggedInAtom);
 
   return (
-    <nav className="text-base font-semibold flex justify-between items-center gap-1 cursor-pointer hover:bg-opacity-80 py-4">
-      <p className="text-2xl uppercase text-gray-100 matemasie-regular">
-        <Link href="/">One QR</Link>
+    <nav className="text-base font-semibold flex justify-between items-center gap-1 cursor-pointer hover:bg-opacity-80 py-4 dm-serif-text-regular">
+      <p className="text-2xl uppercase text-gray-100 ">
+        <Link href="/">ONETAPQR</Link>
       </p>
       {isLoggedIn ? (
         <Link href={"/profile"}>
@@ -20,15 +20,9 @@ export default function Navbar() {
           </div>
         </Link>
       ) : (
-        <a
-          href={GITHUB_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-2"
-        >
-          <FaGithubAlt size={24} />
-          <span className="">Github</span>
-        </a>
+        <Link href={"/login"}>
+          <span className="">Login</span>
+        </Link>
       )}
     </nav>
   );

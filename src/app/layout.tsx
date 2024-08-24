@@ -1,10 +1,28 @@
 import { AuthProvider } from "@/components/AuthProvider";
 import "./globals.css";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "One link or QR code to apps on App Store, Google Play",
+export const metadata: Metadata = {
+  title: "onetapqr.xyz",
   description:
     "Simplify app downloads with 'one' smart links for all app stores. Short link generator for app downloads.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://onetapqr.xyz",
+    siteName: "onetapqr.xyz",
+    title: "onetapqr.xyz",
+    description:
+      "Simplify app downloads with 'one' smart links for all app stores. Short link generator for app downloads.",
+    images: [
+      {
+        url: "https://onetapqr.xyz/og.png",
+        width: 400,
+        height: 400,
+        alt: "onetapqr.xyz",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

@@ -1,10 +1,10 @@
 "use client";
-import { CiBarcode } from "react-icons/ci";
 import { Button } from "@/components/Button";
 import Navbar from "@/components/Navbar";
 import { useRouter } from "next/navigation";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa";
 import { IoQrCode } from "react-icons/io5";
+import { GITHUB_URL } from "@/utils/constants";
 
 export default function Home() {
   const router = useRouter();
@@ -103,6 +103,11 @@ export default function Home() {
           >
             {" "}
             @relativelyrehan
+          </a>
+          <span>|</span>
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+            {" "}
+            Github
           </a>
         </div>
       </footer>
