@@ -6,7 +6,7 @@ import QRCode from "react-qr-code";
 import { downloadQRCode } from "@/lib/helpers";
 import { IoClose } from "react-icons/io5";
 import { SiNextdotjs } from "react-icons/si";
-import { AiFillGithub } from "react-icons/ai";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   interface Urls {
@@ -54,20 +54,8 @@ export default function Home() {
     }
   };
   return (
-    <div>
-      <nav className="text-base font-semibold p-4 flex justify-between items-center gap-1 cursor-pointer hover:bg-opacity-80">
-        <p className="coromant text-2xl uppercase text-gray-100">
-          One
-          <span className="text-gray-400"> | QR</span>
-        </p>
-        <a
-          href="https://github.com/relativelyrehan/one"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <AiFillGithub size={24} />
-        </a>
-      </nav>
+    <section className="container mx-auto">
+      <Navbar />
       <div className="max-w-4xl mx-auto flex flex-col justify-center items-center h-[80vh] px-5">
         {qr ? (
           <div className="fixed inset-0 backdrop-blur-md z-10 flex items-center justify-center px-5">
@@ -201,6 +189,6 @@ export default function Home() {
         </div>
       </footer>
       <Toaster />
-    </div>
+    </section>
   );
 }

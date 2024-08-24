@@ -7,6 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model user {
+  id         String    @id @default(uuid())
+  email      String    @unique @db.VarChar(255)
+  password   String    @db.VarChar(255)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
+  limit      Int       @default(0)
+  ip_address String?   @db.VarChar(255)
+  qr         qr[]
+  last_login DateTime?
+  last_ip    String?   @db.VarChar(255)
+}
+
 model qr {
   id             String    @id @default(uuid())
   app_store_url  String?
@@ -14,4 +28,8 @@ model qr {
   created_at     DateTime  @default(now())
   updated_at     DateTime  @updatedAt
   deleted_at     DateTime?
+  user_id        String
+  clicks         Int       @default(0)
+  user           user      @relation(fields: [user_id], references: [id])
+  slug           String    @unique @db.VarChar(255)
 }

@@ -1,16 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Matemasie&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #000111;
-  background-image: linear-gradient(#ffc4a715, 0.1rem, transparent 0.1rem),
-    linear-gradient(90deg, #ffc4a715 0.1rem, transparent 0.1rem);
-  background-size: 3.5rem 3.5rem;
-  color: #fefefe;
+.crimson {
+  font-family: "Crimson Pro", sans-serif;
+  font-style: normal;
 }
 
-.coromant {
-  font-family: "Cormorant Garamond", serif !important;
+body {
+  background-color: #000;
+  font-family: "Crimson Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  @apply antialiased;
+}
+
+.matemasie-regular {
+  font-family: "Matemasie", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
