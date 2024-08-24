@@ -27,25 +27,6 @@ type IProps = {
   qrId?: string;
 };
 
-export const downloadQRCode = (id: string) => {
-  const svg = document.getElementById("QRCode") as HTMLElement;
-  const svgData = new XMLSerializer().serializeToString(svg);
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-  const img = new Image();
-  img.onload = () => {
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx?.drawImage(img, 0, 0);
-    const pngFile = canvas.toDataURL("image/png");
-    const downloadLink = document.createElement("a");
-    downloadLink.download = `one-redirect-qrcode-${id}`;
-    downloadLink.href = `${pngFile}`;
-    downloadLink.click();
-  };
-  img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
-};
-
 export function QRCard({
   key,
   path,
@@ -58,7 +39,17 @@ export function QRCard({
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [, setRefetch] = useAtom(refetchAtom);
+
+  const [downloadModal, setDownloadModal] = useState(false);
   const ref = useRef<QRCode>(null);
+  const customRef = useRef<QRCode>(null);
+
+  const [customValues, setCustomValues] = useState({
+    background: "#ffffff",
+    foreground: "#000000",
+    eyeColor: "#000000",
+    style: "squares",
+  });
 
   async function handleDelete(id: string) {
     try {
@@ -97,7 +88,7 @@ export function QRCard({
       <div className="w-full h-72 flex items-start justify-center gap-1">
         <QRCode
           ref={ref}
-          id="QRCode"
+          id={path}
           size={250}
           value={`https://one.devrehan.xyz/api/qr?slug=${path}`}
           ecLevel="M"
@@ -130,7 +121,15 @@ export function QRCard({
               if (path)
                 ref.current?.download("png", `one-redirect-qrcode-${path}`);
             }}
-            className="bg-white py-4 rounded text-black flex items-center justify-center flex-1"
+            className="bg-white py-4 rounded text-black flex items-center justify-center flex-1 lg:hidden"
+          >
+            <MdDownload />
+          </button>
+          <button
+            onClick={() => {
+              setDownloadModal(true);
+            }}
+            className="bg-white py-4 rounded text-black hidden items-center justify-center flex-1 lg:flex"
           >
             <MdDownload />
           </button>
@@ -157,6 +156,133 @@ export function QRCard({
           ) : null}
         </div>
       </div>
+      <SecondScreen
+        title="Editor"
+        show={downloadModal}
+        onClose={() => setDownloadModal(false)}
+      >
+        <div className="p-6 flex items-start justify-center gap-5">
+          <QRCode
+            size={250}
+            value={`https://one.devrehan.xyz/api/qr?slug=${path}`}
+            ecLevel="M"
+            ref={customRef}
+            bgColor={customValues.background}
+            fgColor={customValues.foreground}
+            qrStyle={customValues.style as "squares" | "dots" | "fluid"}
+            eyeColor={customValues.eyeColor}
+          />
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex flex-col gap-1">
+              <label htmlFor="email" className="text-lg">
+                Background
+              </label>
+              <input
+                type="text"
+                id="background"
+                name="background"
+                placeholder="eg. #ffffff"
+                className="px-3 py-4 border border-zinc-800 rounded-md bg-black focus:outline-none focus:ring-1 focus:ring-zinc-600 focus:border-transparent"
+                autoCapitalize="off"
+                autoComplete="off"
+                value={customValues.background}
+                onChange={(e) => {
+                  setCustomValues((prev) => ({
+                    ...prev,
+                    background: e.target.value,
+                  }));
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="email" className="text-lg">
+                Foreground
+              </label>
+              <input
+                type="text"
+                id="foreground"
+                name="foreground"
+                placeholder="eg. #000000"
+                className="px-3 py-4 border border-zinc-800 rounded-md bg-black focus:outline-none focus:ring-1 focus:ring-zinc-600 focus:border-transparent"
+                autoCapitalize="off"
+                autoComplete="off"
+                value={customValues.foreground}
+                onChange={(e) => {
+                  setCustomValues((prev) => ({
+                    ...prev,
+                    foreground: e.target.value,
+                  }));
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="email" className="text-lg">
+                Eye Color
+              </label>
+              <input
+                type="text"
+                id="eye color"
+                name="eye color"
+                placeholder="eg. #000000"
+                className="px-3 py-4 border border-zinc-800 rounded-md bg-black focus:outline-none focus:ring-1 focus:ring-zinc-600 focus:border-transparent"
+                autoCapitalize="off"
+                autoComplete="off"
+                value={customValues.eyeColor}
+                onChange={(e) => {
+                  setCustomValues((prev) => ({
+                    ...prev,
+                    eyeColor: e.target.value,
+                  }));
+                }}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="email" className="text-lg">
+                Style
+              </label>
+              <select
+                id="style"
+                name="style"
+                placeholder="eg. #000000"
+                className="px-3 py-4 border border-zinc-800 rounded-md bg-black focus:outline-none focus:ring-1 focus:ring-zinc-600 focus:border-transparent"
+                autoCapitalize="off"
+                autoComplete="off"
+                value={customValues.style}
+                onChange={(e) => {
+                  setCustomValues((prev) => ({
+                    ...prev,
+                    style: e.target.value,
+                  }));
+                }}
+              >
+                <option value="squares">Squares</option>
+                <option value="dots">Dots</option>
+                <option value="fluid">Fluid</option>
+              </select>
+            </div>
+            <button
+              onClick={() => {
+                if (path)
+                  customRef.current?.download(
+                    "png",
+                    `one-redirect-qrcode-${path}`
+                  );
+              }}
+              className="bg-white py-4 rounded text-black flex items-center justify-center flex-1 "
+            >
+              <MdDownload />
+            </button>
+            <button
+              onClick={() => {
+                setShow(true);
+              }}
+              className="bg-white py-4 rounded text-black flex items-center justify-center flex-1"
+            >
+              <FaTrash />
+            </button>
+          </div>
+        </div>
+      </SecondScreen>
       <SecondScreen title="Delete QR" show={show} onClose={handleClose}>
         <div className="p-6">
           <p className="text-center text-lg mb-6">
