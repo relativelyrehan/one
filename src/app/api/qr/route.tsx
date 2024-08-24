@@ -1,53 +1,23 @@
-import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import UAParser from "ua-parser-js";
 import { NextRequest, NextResponse } from "next/server";
 import { VALID_SLUG_LENGTH } from "@/utils/constants";
-
-// export async function GET(req: NextRequest) {
-//   const { searchParams } = req.nextUrl
-//   const id = searchParams.get("id");
-//   if (!id) {
-//     return redirect("/404");
-//   }
-//   const headers = req.headers;
-//   const userAgent = headers.get("user-agent");
-//   let parser = new UAParser(userAgent as any);
-//   let os = parser.getOS();
-//   os.name = os.name || "";
-//   const qr = await prisma.qr.findUnique({
-//     where: {
-//       id,
-//     },
-//   });
-//   if (qr?.app_store_url && qr?.play_store_url) {
-//     if (
-//       os &&
-//       ["ios", "mac os", "macos", "ipad"].includes(os.name.toLowerCase())
-//     ) {
-//       redirect(`${qr?.app_store_url}`);
-//     }
-//     redirect(`${qr?.play_store_url}`);
-//   } else {
-//     redirect("/404");
-//   }
-// }
-
 export async function GET(req: NextRequest) {
   try {
     const slug = req.nextUrl.searchParams.get("slug");
 
     if (!slug || slug.length !== VALID_SLUG_LENGTH) {
-      redirect("/404");
+      return NextResponse.json({ error: "Invalid slug" }, { status: 400 });
     }
-    const qr = await prisma.qr.findUnique({
+
+    const qrCode = await prisma.qr.findUnique({
       where: {
-        slug,
+        slug: slug as string,
       },
     });
 
-    if (!qr) {
-      redirect("/404");
+    if (!qrCode) {
+      return NextResponse.json({ error: "QR Code not found" }, { status: 404 });
     }
 
     const headers = req.headers;
@@ -57,14 +27,15 @@ export async function GET(req: NextRequest) {
     os.name = os.name || "";
 
     if (
-      os &&
-      ["ios", "mac os", "macos", "ipad"].includes(os.name.toLowerCase())
+      ["ios", "mac os", "macos", "ipad"].includes(os.name.toLowerCase()) &&
+      qrCode.app_store_url
     ) {
-      redirect(`${qr?.app_store_url}`);
+      return NextResponse.redirect(qrCode.app_store_url, { status: 301 });
+    } else if (qrCode.play_store_url) {
+      return NextResponse.redirect(qrCode.play_store_url, { status: 301 });
     }
-    redirect(`${qr?.play_store_url}`);
-  } catch (error) {
-    console.error(error);
-    redirect("/404");
+    return NextResponse.redirect("/404");
+  } catch (e) {
+    console.error(e);
   }
 }
