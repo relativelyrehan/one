@@ -76,7 +76,7 @@ export default function Profile() {
               type="submit"
               onClick={() => {
                 localStorage.clear();
-                router.push("/home");
+                router.push("/");
               }}
             ></Button>
           </div>
