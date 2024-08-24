@@ -89,7 +89,7 @@ export function QRCard({
           <button
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://one.rehan.fun/api/qr?id=${path}`
+                `https://one.rehan.fun/api/qr?slug=${path}`
               );
               toast.success("Link copied to clipboard");
             }}
