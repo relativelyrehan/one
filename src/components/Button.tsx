@@ -78,7 +78,7 @@ export function Button({
       onClick={onClick}
     >
       {loading ? (
-        <ClipLoader size={22} color="#000" />
+        <ClipLoader size={22} color="#fb923c" />
       ) : children ? (
         children
       ) : (

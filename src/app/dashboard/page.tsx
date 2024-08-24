@@ -8,12 +8,15 @@ import { useEffect, useState } from "react";
 import { QRCard } from "@/components/QRCard";
 import toast from "react-hot-toast";
 import { AUTH_TOKEN_KEY } from "@/utils/constants";
+import { useAtom } from "jotai";
+import { refetchAtom } from "@/lib/atoms";
 
 export default function Dashboard() {
   const [createQR, setCreateQR] = useState(false);
   const [editQR, setEditQR] = useState(false);
   const [pending, setPending] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [refetch] = useAtom(refetchAtom);
 
   const [qrList, setQrList] = useState<
     {
@@ -123,6 +126,12 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
+    if (refetch) {
+      handleGetQR();
+    }
+  }, [refetch]);
+
+  useEffect(() => {
     handleGetQR();
   }, []);
 
@@ -164,6 +173,7 @@ export default function Dashboard() {
                   playStoreURL={qr.play_store_url}
                   createdAt={qr.created_at}
                   clicks={qr.clicks}
+                  qrId={qr.id}
                 />
               ))}
         </div>

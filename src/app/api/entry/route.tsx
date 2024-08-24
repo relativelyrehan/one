@@ -119,3 +119,30 @@ export async function GET(req: NextRequest) {
     return NextResponse.json("Internal Server Error", { status: 500 });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const id = req.nextUrl.searchParams.get("id");
+    if (!id) {
+      return NextResponse.json("Bad Request", { status: 400 });
+    }
+    const authToken = req.headers.get("authorization")?.split(" ")[1];
+    if (!authToken) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+    const { userId } = verifyToken(authToken);
+    if (!userId) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+    const qr = await prisma.qr.deleteMany({
+      where: {
+        id: id,
+        user_id: userId,
+      },
+    });
+    return NextResponse.json({}, { status: 200 });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json("Internal Server Error", { status: 500 });
+  }
+}
