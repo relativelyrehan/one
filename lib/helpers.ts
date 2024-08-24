@@ -1,3 +1,4 @@
+import { VALID_SLUG_LENGTH } from "@/utils/constants";
 import jwt from "jsonwebtoken";
 import { customAlphabet } from "nanoid";
 
@@ -54,6 +55,6 @@ export function verifyToken(token: string): { userId: string | null } {
 
 export function generateSlug() {
   const alphabet = "0123456789abcdefghijklmnopqrstuvwxyz";
-  const nanoid = customAlphabet(alphabet, 6);
+  const nanoid = customAlphabet(alphabet, VALID_SLUG_LENGTH);
   return nanoid();
 }

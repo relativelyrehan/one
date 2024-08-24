@@ -9,7 +9,8 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function Login() {
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (typeof window && localStorage.getItem(AUTH_TOKEN_KEY)) {
@@ -30,6 +31,7 @@ export default function Login() {
       if (!re_password) return toast.error("Confirm password is required");
       if (password !== re_password)
         return toast.error("Passwords do not match");
+      setLoading(true);
       const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
@@ -37,18 +39,21 @@ export default function Login() {
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log(response);
       if (response.status === 200) {
         toast.success("Login successful");
-        const { data } = await response.json();
+        const data = await response.json();
         window.localStorage.setItem(AUTH_TOKEN_KEY, data.token);
         router.push("/dashboard");
+        setLoading(false);
       }
       if (response.status === 400) {
         const data = await response.json();
+        setLoading(false);
         return toast.error(data);
       }
     } catch (e) {
+      console.error(e);
+      setLoading(false);
       return toast.error("Something went wrong");
     }
   }
@@ -66,6 +71,7 @@ export default function Login() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
+              if (loading) return;
               hanldeLogin(
                 e.currentTarget.email.value,
                 e.currentTarget.password.value,
@@ -111,7 +117,7 @@ export default function Login() {
                 Confirm Password
               </label>
               <input
-                type="text"
+                type="password"
                 id="re_password"
                 name="re_password"
                 placeholder="Enter your password"
@@ -124,6 +130,7 @@ export default function Login() {
               category="white"
               text="Sign Up"
               type="submit"
+              loading={loading}
             ></Button>
           </form>
           <p className="mt-4 text-xl">

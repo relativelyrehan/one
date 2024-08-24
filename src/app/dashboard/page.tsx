@@ -106,6 +106,7 @@ export default function Dashboard() {
         setLoading(false);
         const data = await response.json();
         setNewQr(data.qr);
+        setQrList((prev) => [data.qr, ...prev]);
         return toast.success("QR code generated successfully");
       } else {
         setLoading(false);
@@ -125,18 +126,20 @@ export default function Dashboard() {
     <AuthProvider>
       <section className="container mx-auto px-6">
         <Navbar />
-        <div className="flex items-center justify-between">
-          <h1 className="text-4xl mt-10 font-semibold">
+        <div className="flex items-center">
+          <h1 className="text-4xl mt-10 font-semibold flex-1">
             Your QRs ({qrList.length})
           </h1>
-          <Button
-            padding="py-1 px-4"
-            className="mt-8 w-32"
-            category="white"
-            text="Generate QR"
-            type="submit"
-            onClick={() => setCreateQR(true)}
-          ></Button>
+          <div>
+            <Button
+              padding="py-1 px-4"
+              className="mt-8 w-32"
+              category="white"
+              text="Generate QR"
+              type="submit"
+              onClick={() => setCreateQR(true)}
+            ></Button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-6">

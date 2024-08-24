@@ -52,7 +52,7 @@ export function QRCard({
         <QRCode
           id="QRCode"
           size={250}
-          value={`https://one.rehan.fun/api/qr?id=${path}`}
+          value={`https://one.rehan.fun/api/qr?slug=${path}`}
           level="L"
         />
       </div>

@@ -4,14 +4,17 @@ import Navbar from "@/components/Navbar";
 import { AUTH_TOKEN_KEY } from "@/utils/constants";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Login() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   async function hanldeLogin(email: string, password: string) {
     try {
       if (!email) return toast.error("Email is required");
       if (!password) return toast.error("Password is required");
+      setLoading(true);
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
@@ -24,11 +27,14 @@ export default function Login() {
         toast.success("Login successful");
         window.localStorage.setItem(AUTH_TOKEN_KEY, data.token);
         router.push("/dashboard");
+        setLoading(false);
       } else {
         toast.error("Something went wrong");
+        setLoading(false);
       }
     } catch (e) {
       return toast.error("Something went wrong");
+      setLoading(false);
     }
   }
 
@@ -42,6 +48,7 @@ export default function Login() {
         <div className=" w-full lg:max-w-sm mx-auto mt-10">
           <form
             onSubmit={(e) => {
+              if (loading) return;
               e.preventDefault();
               hanldeLogin(
                 e.currentTarget.email.value,
@@ -81,6 +88,7 @@ export default function Login() {
               category="white"
               text="Login"
               type="submit"
+              loading={loading}
             ></Button>
           </form>
           <p className="mt-4 text-xl">

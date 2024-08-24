@@ -16,7 +16,7 @@ export default function Navbar() {
         <Link href={"/profile"}>
           <div className="flex items-center gap-2">
             <FaUser size={24} />
-            <span className="matemasie-regular">Profile</span>
+            <span className="">Profile</span>
           </div>
         </Link>
       ) : (
@@ -27,7 +27,7 @@ export default function Navbar() {
           className="flex items-center gap-2"
         >
           <FaGithubAlt size={24} />
-          <span className="matemasie-regular">Github</span>
+          <span className="">Github</span>
         </a>
       )}
     </nav>

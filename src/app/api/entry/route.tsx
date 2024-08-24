@@ -29,6 +29,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
+    const user = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        qr: true,
+      },
+    });
+
+    if (user?.qr && user.qr.length >= 5) {
+      return NextResponse.json(
+        { message: "You have reached the limit" },
+        { status: 400 }
+      );
+    }
+
     const qr = await prisma.qr.create({
       data: {
         app_store_url: app_url,
