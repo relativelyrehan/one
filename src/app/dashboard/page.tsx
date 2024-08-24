@@ -109,7 +109,11 @@ export default function Dashboard() {
         setQrList((prev) => [data.qr, ...prev]);
         return toast.success("QR code generated successfully");
       } else {
+        const data = await response.json();
         setLoading(false);
+        if (data?.message) {
+          return toast.error(data.message);
+        }
         return toast.success("Something went wrong");
       }
     } catch (error) {
