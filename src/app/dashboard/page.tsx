@@ -165,17 +165,24 @@ export default function Dashboard() {
                     key={k}
                   ></div>
                 ))
-            : qrList?.map((qr, k) => (
-                <QRCard
-                  key={qr.id}
-                  path={qr.slug}
-                  appStoreURL={qr.app_store_url}
-                  playStoreURL={qr.play_store_url}
-                  createdAt={qr.created_at}
-                  clicks={qr.clicks}
-                  qrId={qr.id}
-                />
-              ))}
+            : qrList
+                .sort((a, b) => {
+                  return (
+                    new Date(b.created_at).getTime() -
+                    new Date(a.created_at).getTime()
+                  );
+                })
+                ?.map((qr, k) => (
+                  <QRCard
+                    key={qr.id}
+                    path={qr.slug}
+                    appStoreURL={qr.app_store_url}
+                    playStoreURL={qr.play_store_url}
+                    createdAt={qr.created_at}
+                    clicks={qr.clicks}
+                    qrId={qr.id}
+                  />
+                ))}
         </div>
 
         <SecondScreen title="Create QR" show={createQR} onClose={handleClose}>
