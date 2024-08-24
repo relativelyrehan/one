@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <section className="container mx-auto px-4 lg:px-10 xl:px-16">
       <Navbar />
-      <div className="mx-auto flex lg:flex-row flex-col-reverse justify-center items-center h-[60vh]">
+      <div className="mx-auto flex lg:flex-row flex-col-reverse justify-center items-center h-[65vh]  lg:h-[60vh]">
         <div className="flex-1">
           <h1 className="text-5xl xl:text-7xl font-semibold mb-1 mt-10">
             Generate one QR for both Playstore and Appstore app links
@@ -53,26 +53,28 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <Button
-          padding="py-4 px-10 mt-20"
-          className="mt-8 w-40 text-xl"
-          category="white"
-          text="Login"
-          type="button"
-          onClick={() => {
-            router.push("/login");
-          }}
-        ></Button>
-        <Button
-          padding="py-4 px-10"
-          className="mt-8 w-40 text-xl mb-40"
-          category="white"
-          text="Sign Up"
-          type="button"
-          onClick={() => {
-            router.push("/signup");
-          }}
-        ></Button>
+        <div className="w-full sm:w-40">
+          <Button
+            padding="py-4 px-10 mt-20"
+            className="mt-8 w-40 text-xl"
+            category="white"
+            text="Login"
+            type="button"
+            onClick={() => {
+              router.push("/login");
+            }}
+          ></Button>
+          <Button
+            padding="py-4 px-10"
+            className="mt-8 w-40 text-xl mb-40"
+            category="white"
+            text="Sign Up"
+            type="button"
+            onClick={() => {
+              router.push("/signup");
+            }}
+          ></Button>
+        </div>
       </div>
       <footer className="mb-32">
         <div className="flex justify-center items-center gap-1">
@@ -82,7 +84,6 @@ export default function Home() {
             href="https://github.com/relativelyrehan"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-600"
           >
             {" "}
             @relativelyrehan
