@@ -34,19 +34,19 @@ export default function Home() {
           redirected to play store. Interested? Login now!
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-10">
-          <div className="col-span-1 bg-zinc-800/50 rounded p-3">
+          <div className="col-span-1 bg-zinc-800/50 rounded p-3 py-16">
             <p className="text-3xl text-center">Add Apple Store Link</p>
             <p>
               <FaAppStoreIos size={100} className="mx-auto mt-4" />
             </p>
           </div>
-          <div className="col-span-1 bg-zinc-800/50 rounded p-3">
+          <div className="col-span-1 bg-zinc-800/50 rounded p-3 py-16">
             <p className="text-3xl text-center">Add Play Store Link</p>
             <p>
               <FaGooglePlay size={100} className="mx-auto mt-4" />
             </p>
           </div>
-          <div className="col-span-1 bg-zinc-800/50 rounded p-3">
+          <div className="col-span-1 bg-zinc-800/50 rounded p-3 py-16">
             <p className="text-3xl text-center">Get your QR Code</p>
             <p>
               <IoQrCode size={100} className="mx-auto mt-4" />
