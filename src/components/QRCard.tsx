@@ -97,7 +97,7 @@ export function QRCard({
         <QRCode
           id="QRCode"
           size={250}
-          value={`https://one.rehan.fun/api/qr?slug=${path}`}
+          value={`https://one.devrehan.xyz/api/qr?slug=${path}`}
           level="L"
         />
       </div>
@@ -134,7 +134,7 @@ export function QRCard({
           <button
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://one.rehan.fun/api/qr?slug=${path}`
+                `https://one.devrehan.xyz/api/qr?slug=${path}`
               );
               toast.success("Link copied to clipboard");
             }}
