@@ -26,6 +26,15 @@ export async function GET(req: NextRequest) {
     let os = parser.getOS();
     os.name = os.name || "";
 
+    await prisma.qr.update({
+      where: {
+        id: qrCode.id,
+      },
+      data: {
+        clicks: qrCode.clicks + 1,
+      },
+    });
+
     if (
       ["ios", "mac os", "macos", "ipad"].includes(os.name.toLowerCase()) &&
       qrCode.app_store_url
