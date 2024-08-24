@@ -29,6 +29,7 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
     "react-qr-code": "^2.0.11",
+    "react-qrcode-logo": "^3.0.0",
     "react-spinners": "^0.14.1",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",

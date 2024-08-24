@@ -7,11 +7,11 @@ import {
   FaChartArea,
   FaTrash,
 } from "react-icons/fa";
-import QRCode from "react-qr-code";
+import { QRCode } from "react-qrcode-logo";
 import { MdDownload, MdOutlineFileCopy } from "react-icons/md";
 import toast from "react-hot-toast";
 import { SecondScreen } from "./SecondScreen";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "./Button";
 import { AUTH_TOKEN_KEY } from "@/utils/constants";
 import { useAtom } from "jotai";
@@ -58,6 +58,7 @@ export function QRCard({
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [, setRefetch] = useAtom(refetchAtom);
+  const ref = useRef<QRCode>(null);
 
   async function handleDelete(id: string) {
     try {
@@ -95,10 +96,11 @@ export function QRCard({
     <div key={key} className="w-full p-4 rounded col-span-1 bg-zinc-800">
       <div className="w-full h-72 flex items-start justify-center gap-1">
         <QRCode
+          ref={ref}
           id="QRCode"
           size={250}
           value={`https://one.devrehan.xyz/api/qr?slug=${path}`}
-          level="L"
+          ecLevel="M"
         />
       </div>
       <div className="flex flex-col gap-1 w-full">
@@ -125,7 +127,8 @@ export function QRCard({
         <div className="flex items-center gap-2 mt-3">
           <button
             onClick={() => {
-              if (path) downloadQRCode(path);
+              if (path)
+                ref.current?.download("png", `one-redirect-qrcode-${path}`);
             }}
             className="bg-white py-4 rounded text-black flex items-center justify-center flex-1"
           >
