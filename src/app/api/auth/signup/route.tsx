@@ -41,6 +41,7 @@ export async function POST(req: Request) {
         email,
         password: hashedPassword,
         ip_address: ip,
+        last_login: new Date(),
       },
     });
 
