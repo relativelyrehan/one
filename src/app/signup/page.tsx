@@ -61,7 +61,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <section className="container mx-auto px-6">
+    <section className="container mx-auto px-4 lg:px-10 xl:px-16">
       <Navbar />
       <div>
         <h1 className="text-4xl text-center mt-10 font-semibold">

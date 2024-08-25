@@ -135,7 +135,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <section className="container mx-auto px-6">
+    <section className="container mx-auto px-4 lg:px-10 xl:px-16">
       <Navbar />
       <div className="flex items-center">
         <h1 className="text-4xl mt-10 font-semibold flex-1">

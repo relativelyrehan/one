@@ -38,7 +38,7 @@ export default function Profile() {
   }, []);
 
   return (
-    <section className="container mx-auto px-6">
+    <section className="container mx-auto px-4 lg:px-10 xl:px-16">
       <Navbar />
       {loading ? (
         <div className="max-w-sm mt-10">
