@@ -90,7 +90,7 @@ export function QRCard({
           ref={ref}
           id={path}
           size={250}
-          value={`https://one.devrehan.xyz/api/qr?slug=${path}`}
+          value={`https://www.onetapqr.xyz/api/qr?slug=${path}`}
           ecLevel="M"
         />
       </div>
@@ -136,7 +136,7 @@ export function QRCard({
           <button
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://one.devrehan.xyz/api/qr?slug=${path}`
+                `https://www.onetapqr.xyz/api/qr?slug=${path}`
               );
               toast.success("Link copied to clipboard");
             }}
@@ -164,7 +164,7 @@ export function QRCard({
         <div className="p-6 flex items-start justify-center gap-5">
           <QRCode
             size={250}
-            value={`https://one.devrehan.xyz/api/qr?slug=${path}`}
+            value={`https://www.onetapqr.xyz/api/qr?slug=${path}`}
             ecLevel="M"
             ref={customRef}
             bgColor={customValues.background}
