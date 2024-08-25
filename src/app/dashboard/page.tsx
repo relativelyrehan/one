@@ -154,15 +154,18 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-6">
-        {pending
-          ? new Array(12)
-              .fill(0)
-              .map((_, k) => (
-                <div
-                  className="col-span-1 bg-zinc-800 animate-pulse h-80"
-                  key={k}
-                ></div>
-              ))
+        {!pending
+          ? new Array(12).fill(0).map((_, k) => (
+              <div
+                className="col-span-1 bg-zinc-800 animate-pulse h-96 p-6"
+                key={k}
+              >
+                <div className="h-40 w-full bg-zinc-500 animate-pulse"></div>
+                <div className="h-10 w-full bg-zinc-500 animate-pulse mb-2"></div>
+                <div className="h-10 w-full bg-zinc-500 animate-pulse mb-2"></div>
+                <div className="h-10 w-full bg-zinc-500 animate-pulse mb-2"></div>
+              </div>
+            ))
           : qrList
               .sort((a, b) => {
                 return (
