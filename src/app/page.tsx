@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <section className="container mx-auto px-4 lg:px-10 xl:px-16">
       <Navbar />
-      <div className="mx-auto flex lg:flex-row flex-col-reverse justify-center items-center h-[70vh]  lg:h-[60vh]">
+      <div className="mx-auto flex lg:flex-row flex-col-reverse justify-center items-center h-auto sm:h-[70vh] lg:h-[60vh]">
         <div className="flex-1">
           <h1 className="text-5xl xl:text-7xl font-semibold mb-1 mt-10">
             Generate one QR for both Playstore and Appstore app links
@@ -35,7 +35,7 @@ export default function Home() {
         </div>
         <div className="flex-1 flex items-center justify-center flex-col">
           <div className="bg-zinc-800/50 rounded-xl p-3">
-            <IoQrCode className="mx-auto mt-4 h-60 w-60 sm:h-64 sm:w-64 lg:h-96 lg:w-96" />
+            <IoQrCode className="mx-auto mt-4 h-52 w-52 sm:h-64 sm:w-64 lg:h-96 lg:w-96" />
           </div>
         </div>
       </div>
