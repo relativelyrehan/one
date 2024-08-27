@@ -11,11 +11,27 @@ export default function Home() {
   return (
     <section className="container mx-auto px-4 lg:px-10 xl:px-16">
       <Navbar />
-      <div className="mx-auto flex lg:flex-row flex-col-reverse justify-center items-center h-[65vh]  lg:h-[60vh]">
+      <div className="mx-auto flex lg:flex-row flex-col-reverse justify-center items-center h-[70vh]  lg:h-[60vh]">
         <div className="flex-1">
           <h1 className="text-5xl xl:text-7xl font-semibold mb-1 mt-10">
             Generate one QR for both Playstore and Appstore app links
           </h1>
+          <div className="flex w-full lg:w-1/2 gap-2 mt-4 mb-6">
+            <Button
+              text="Login"
+              category="white"
+              onClick={() => {
+                router.push("/login");
+              }}
+            />
+            <Button
+              text="Sign Up"
+              category="bordered"
+              onClick={() => {
+                router.push("/signup");
+              }}
+            />
+          </div>
         </div>
         <div className="flex-1 flex items-center justify-center flex-col">
           <div className="bg-zinc-800/50 rounded-xl p-3">
@@ -53,7 +69,23 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="mb-10">
+        <div className="flex flex-col w-full lg:w-56 gap-3">
+          <Button
+            text="Login"
+            category="white"
+            onClick={() => {
+              router.push("/login");
+            }}
+          />
+          <Button
+            text="Sign Up"
+            category="bordered"
+            onClick={() => {
+              router.push("/signup");
+            }}
+          />
+        </div>
+        <div className="my-10 ">
           <h1 className="text-5xl xl:text-7xl font-semibold mb-1">
             Generate different color QR codes
           </h1>
@@ -69,27 +101,21 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="w-full sm:w-40">
+        <div className="flex flex-col w-full lg:w-56 gap-3">
           <Button
-            padding="py-4 px-10 mt-20"
-            className="mt-8 w-40 text-xl"
-            category="white"
             text="Login"
-            type="button"
+            category="white"
             onClick={() => {
               router.push("/login");
             }}
-          ></Button>
+          />
           <Button
-            padding="py-4 px-10"
-            className="mt-8 w-40 text-xl mb-40"
-            category="white"
             text="Sign Up"
-            type="button"
+            category="bordered"
             onClick={() => {
               router.push("/signup");
             }}
-          ></Button>
+          />
         </div>
       </div>
       <footer className="mb-32">

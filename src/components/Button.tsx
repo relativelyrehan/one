@@ -42,7 +42,7 @@ export function Button({
       "bg-primary text-white hover:bg-blue-700 transform transition-all",
     danger: "text-white border-red-400 border bg-black",
     white: "bg-white text-black",
-    bordered: "bg-white text-black border border-gray-400",
+    bordered: "bg-transparent text-white border border-gray-100",
     transparent: "bg-transparent text-black border border-gray-400",
   };
 

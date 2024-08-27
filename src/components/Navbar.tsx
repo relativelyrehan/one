@@ -21,7 +21,7 @@ export default function Navbar() {
         </Link>
       ) : (
         <Link href={"/login"}>
-          <span className="">Login</span>
+          <span className="text-lg lg:text-xl">Login</span>
         </Link>
       )}
     </nav>
