@@ -122,7 +122,7 @@ export default function Home() {
             <Link href="/login" className="mb-1 text-lg text-gray-400">
               Login
             </Link>
-            <Link href="/Signup" className="mb-1 text-lg text-gray-400">
+            <Link href="/signup" className="mb-1 text-lg text-gray-400">
               Sign Up{" "}
             </Link>
           </div>
