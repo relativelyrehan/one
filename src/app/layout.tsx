@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { AuthProvider } from "@/components/AuthProvider";
 import "./globals.css";
 import { Metadata } from "next";
@@ -46,6 +47,7 @@ export default function RootLayout({
             referrerPolicy="no-referrer-when-downgrade"
           />
         </noscript>
+        <GoogleAnalytics gaId="G-XS55JLKVG0" />
       </body>
     </html>
   );
