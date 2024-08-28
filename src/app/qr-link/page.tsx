@@ -73,46 +73,6 @@ export default function QRLinks() {
     }
   }
 
-  // async function handleSubmitQR(app_url: string, play_url: string) {
-  //   if (!app_url || !play_url) {
-  //     return toast.error("Please fill in both app store links");
-  //   }
-  //   if (!app_url.includes("https://apps.apple.com/")) {
-  //     return toast.error("Please enter valid app store link");
-  //   }
-  //   if (!play_url.includes("https://play.google.com")) {
-  //     return toast.error("Please enter valid play store link");
-  //   }
-  //   try {
-  //     setLoading(true);
-  //     const response = await fetch("/api/entry", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}`,
-  //       },
-  //       body: JSON.stringify({ app_url: app_url, play_url: play_url }),
-  //     });
-  //     if (response.status == 200) {
-  //       setLoading(false);
-  //       const data = await response.json();
-  //       setNewQr(data.qr);
-  //       setQrList((prev) => [data.qr, ...prev]);
-  //       return toast.success("QR code generated successfully");
-  //     } else {
-  //       const data = await response.json();
-  //       setLoading(false);
-  //       if (data?.message) {
-  //         return toast.error(data.message);
-  //       }
-  //       return toast.success("Something went wrong");
-  //     }
-  //   } catch (error) {
-  //     toast.error("Something went wrong");
-  //     setLoading(false);
-  //   }
-  // }
-
   useEffect(() => {
     if (refetch) {
       handleGetQR();
@@ -180,7 +140,8 @@ export default function QRLinks() {
           <div>
             <h1 className="text-2xl font-semibold">No QRs found</h1>
             <p className="text-zinc-400">
-              Generate a new QR code by clicking on the "Generate QR" button
+              Generate a new QR code by clicking on the &quot;Generate QR&quot;
+              button
             </p>
           </div>
         ) : null}

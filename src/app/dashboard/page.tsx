@@ -164,7 +164,8 @@ export default function Dashboard() {
           <div>
             <h1 className="text-2xl font-semibold">No QRs found</h1>
             <p className="text-zinc-400">
-              Generate a new QR code by clicking on the "Generate QR" button
+              Generate a new QR code by clicking on the &quot;Generate QR&quot;
+              button
             </p>
           </div>
         ) : null}
