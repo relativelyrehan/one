@@ -85,11 +85,11 @@ export function QRCard({
 
   return (
     <div key={key} className="w-full p-4 rounded col-span-1 bg-zinc-800">
-      <div className="w-full h-72 flex items-start justify-center gap-1">
+      <div className="w-full h-56 flex items-start justify-center gap-1">
         <QRCode
           ref={ref}
           id={path}
-          size={250}
+          size={180}
           value={`https://www.onetapqr.xyz/api/qr?slug=${path}`}
           ecLevel="M"
         />
@@ -121,7 +121,7 @@ export function QRCard({
               if (path)
                 ref.current?.download("png", `one-redirect-qrcode-${path}`);
             }}
-            className="bg-white py-4 rounded text-black flex items-center justify-center flex-1 lg:hidden"
+            className="bg-white py-2 rounded text-black flex items-center justify-center flex-1 lg:hidden"
           >
             <MdDownload />
           </button>
@@ -129,7 +129,7 @@ export function QRCard({
             onClick={() => {
               setDownloadModal(true);
             }}
-            className="bg-white py-4 rounded text-black hidden items-center justify-center flex-1 lg:flex"
+            className="bg-white py-2 rounded text-black hidden items-center justify-center flex-1 lg:flex"
           >
             <MdDownload />
           </button>
@@ -140,7 +140,7 @@ export function QRCard({
               );
               toast.success("Link copied to clipboard");
             }}
-            className="bg-white py-4 rounded text-black flex items-center justify-center flex-1"
+            className="bg-white py-2 rounded text-black flex items-center justify-center flex-1"
           >
             <MdOutlineFileCopy />
           </button>
@@ -149,7 +149,7 @@ export function QRCard({
               onClick={() => {
                 setShow(true);
               }}
-              className="bg-white py-4 rounded text-black flex items-center justify-center flex-1"
+              className="bg-white py-2 rounded text-black flex items-center justify-center flex-1"
             >
               <FaTrash />
             </button>

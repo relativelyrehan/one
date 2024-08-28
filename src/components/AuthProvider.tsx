@@ -18,7 +18,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (token && ["/login", "/signup"].indexOf(pathname) !== -1) {
         router.push("/dashboard");
         setIsLoggedIn(true);
-      } else if (!token && pathname === "/dashboard") {
+      } else if (
+        !token &&
+        ["/dashboard", "/dashboard-new", "/profile"].indexOf(pathname) !== -1
+      ) {
         router.push("/login");
       }
     }
