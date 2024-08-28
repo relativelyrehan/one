@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { CiUser, CiLogout } from "react-icons/ci";
 import { IoQrCode } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
-import { RiHome4Line } from "react-icons/ri";
+import { RiHome4Line, RiLink } from "react-icons/ri";
 
 export default function Sidebar({
   show,
@@ -39,6 +39,15 @@ export default function Sidebar({
           >
             <RiHome4Line size={24} />
             <span>Dashboard</span>
+          </Link>
+          <Link
+            href={"/qr-link"}
+            className={`flex gap-2 p-4 rounded items-center ${
+              pathname === "/qr-link" ? "bg-zinc-800 font-medium" : ""
+            }`}
+          >
+            <RiLink size={24} />
+            <span>QR Links</span>
           </Link>
           <Link
             href={"/profile"}

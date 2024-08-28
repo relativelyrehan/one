@@ -84,7 +84,7 @@ export function QRCard({
   }
 
   return (
-    <div key={key} className="w-full p-4 rounded col-span-1 bg-zinc-800">
+    <div key={key} className="w-full p-4 rounded col-span-1 bg-bgColor">
       <div className="w-full h-56 flex items-start justify-center gap-1">
         <QRCode
           ref={ref}
@@ -95,22 +95,22 @@ export function QRCard({
         />
       </div>
       <div className="flex flex-col gap-1 w-full">
-        <p className="bg-zinc-900 px-2 py-1 rounded flex items-center gap-1 ">
+        <p className="bg-zinc-800 px-2 py-1 rounded flex items-center gap-1 ">
           <FaAppStoreIos className="w-5" />
           <span className="line-clamp-1 flex-1">{appStoreURL}</span>
         </p>
-        <p className="bg-zinc-900 px-2 py-1 rounded flex items-center gap-1">
+        <p className="bg-zinc-800 px-2 py-1 rounded flex items-center gap-1">
           <FaGooglePlay className="w-5" />
           <span className="line-clamp-1 flex-1">{playStoreURL}</span>
         </p>
         <div className="flex items-center justify-between gap-1">
-          <p className="bg-zinc-900 px-2 py-1 rounded flex items-center gap-1 flex-1">
+          <p className="bg-zinc-800 px-2 py-1 rounded flex items-center gap-1 flex-1">
             <FaCalendar className="w-5" />
             <span className="line-clamp-1 flex-1">
               {dayjs(createdAt).format("DD MMMM YYYY")}
             </span>
           </p>
-          <p className="bg-zinc-900 px-2 py-1 rounded flex items-center gap-1">
+          <p className="bg-zinc-800 px-2 py-1 rounded flex items-center gap-1">
             <FaChartArea className="w-5" />
             <span className="line-clamp-1 flex-1">{clicks}</span>
           </p>

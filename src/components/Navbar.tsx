@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FaUser } from "react-icons/fa";
 import { IoQrCode } from "react-icons/io5";
 import { CiUser } from "react-icons/ci";
+import { CiMenuFries } from "react-icons/ci";
 export default function Navbar({
   type,
   setShow,
@@ -42,9 +43,9 @@ export default function Navbar({
           onClick={() => {
             setShow((p: boolean) => !p);
           }}
-          className="block lg:hidden"
+          className="block lg:hidden transform rotate-280"
         >
-          <IoQrCode />
+          <CiMenuFries />
         </button>
         <Link href="/dashboard" className="hidden lg:block">
           <IoQrCode />
