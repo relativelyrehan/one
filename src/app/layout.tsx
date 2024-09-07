@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { AuthProvider } from "@/components/AuthProvider";
 import "./globals.css";

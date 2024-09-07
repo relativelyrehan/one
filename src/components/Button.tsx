@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ClipLoader from "react-spinners/ClipLoader";
 
 type ButtonProps = {
@@ -20,6 +22,7 @@ type ButtonProps = {
   href?: string;
   padding?: string;
   children?: any;
+  link?: string;
 };
 
 export function Button({
@@ -35,7 +38,10 @@ export function Button({
   href,
   padding,
   children,
+  link,
 }: ButtonProps) {
+  const router = useRouter();
+
   const colors = {
     primary: "bg-black text-white hover:bg-gray-800 transform transition-all",
     secondary:
