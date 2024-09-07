@@ -8,8 +8,8 @@ import Link from "next/link";
 
 export default async function Home() {
   const myHeaders = new Headers();
-  myHeaders.append("x-api-key", "dl-H2xM6eUgOAv8xnrnIyXrRLCPZWW6IQheC9kp");
-  myHeaders.append("x-project-id", "Gi1cUTtUEwcoFCN");
+  myHeaders.append("x-api-key", process.env.API_KEY as string);
+  myHeaders.append("x-project-id", process.env.PROJECT_ID as string);
 
   const requestOptions = {
     method: "GET",
