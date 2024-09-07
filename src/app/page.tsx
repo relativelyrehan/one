@@ -14,6 +14,9 @@ export default async function Home() {
   const requestOptions = {
     method: "GET",
     headers: myHeaders,
+    next: {
+      revalidate: 300,
+    },
   };
 
   const data = await fetch(
