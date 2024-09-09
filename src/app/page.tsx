@@ -25,9 +25,6 @@ export default async function Home() {
   );
 
   const response = await data.json();
-
-  console.log(response);
-
   return (
     <>
       <section className="container mx-auto px-4 lg:px-10 xl:px-16 mb-40">
